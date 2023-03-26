@@ -1,0 +1,6 @@
+name = 'Uliana'
+age = '29'
+shoe_size = '38'
+shoe_size = int(shoe_size)
+info = f"I am {name} with {age} turns around a Sun and it need a {4007500000/shoe_size} my small steps to go around the Earth"
+print(info)

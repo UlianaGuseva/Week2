@@ -1,0 +1,8 @@
+num1_str = input('Input number: ')
+num1_int = int(num1_str)
+
+
+if num1_int % 2 == 0:
+    print("even")
+else:
+    print("odd")

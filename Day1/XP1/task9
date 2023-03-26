@@ -1,0 +1,8 @@
+height_str = input('Input your height in inches: ')
+height_int = int(height_str)
+height_sm = height_int * 2.54
+
+if height_sm > 145:
+    print("you are tall enough to ride")
+else:
+    print("you need to grow some more to ride")

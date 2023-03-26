@@ -1,0 +1,8 @@
+myname = "Uliana"
+yourname = input('Input your name: ')
+
+if myname == yourname:
+    print('Sister! I was looking for you all my life!')
+    
+else:
+    print('You are from Mars, I am from Venus')
