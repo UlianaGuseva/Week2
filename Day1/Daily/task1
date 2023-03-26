@@ -1,3 +1,4 @@
+import random
 string = input('Input string 10 characters long: ')
 
 if len(string) > 10:
@@ -6,3 +7,12 @@ elif len(string) < 10:
     print("string not long enough")
 else:
     print(string[0],string[-1])
+ 
+strinconstructor = ""   
+for char in string:
+    strinconstructor += char
+    print(strinconstructor)
+
+string = list(string)
+random.shuffle(string)
+print("".join(string))
