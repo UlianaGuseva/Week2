@@ -1,0 +1,30 @@
+#task1
+number = input('put a number: ')
+length = input('put a length: ')
+number = int(number)
+length = int(length)
+multiplier = 1
+list = []
+result = int()
+while multiplier <= length:    
+    result = number * multiplier
+    list.append(result)
+    multiplier += 1
+else:
+    print(list)
+    
+#task2
+your_string = input('input a string: ')
+your_string = list(your_string)
+length = len(your_string)-2
+index = 0
+while index <= length:
+    if your_string[index] == your_string[index+1]:
+        del your_string[index]
+        length = length - 1
+    else:
+        index += 1
+your_string = ''.join(your_string)
+print(your_string)    
+
+

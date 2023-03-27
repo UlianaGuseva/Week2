@@ -1,0 +1,67 @@
+# create
+a_list = []
+b_list = [1,2,3,'a','b']
+c_list = [1,2,3,'a', [5,6,'c', ['%']]]
+
+a_string = 'ABC'
+d_list = list(a_string)  # -> ['A','B','C']
+
+
+# get/retrieve
+first_item = c_lost[0]
+last_item = c_lost[-1]
+between_items = c_list[1:4] #-> [2,3,'a']
+c_list[-1][-1] #-> '%'
+c_list[-2;-1] #-> ['a']
+
+c_list[-2;] #-> ['a', [5,6,'c', ['%']]]
+
+b_list = [1,2,3,'a', 'b']
+b_list.insert(-2, '!') #->[1,2,3, '!', 'a', 'b']
+b_list.index('a') #->4
+ind = b_list.index('a')
+b_list.insert(ind, '!') 
+b_list #-> [1,2,3,'!', 'a', 'b']
+
+# update
+b_list = [1,2,3,'a', 'b']
+b_list[0] = 5
+idx = b_list.index('a')
+b_list.insert(idx+1, '!') #-> [1,2,3,'a','b']
+
+b_list.append('c')#->b_list = [1,2,3,'a', 'b', 'c']
+
+num = [5,2,7,3.8,0]
+num.sort() #-> [0,2,3,5,7,8] does not work eith mix with 'a' or smth like. only numbers
+
+sorted(num) #->num [0,2,3,5,7,8] dont change original num
+num_sorted = sorted(num)
+
+sorted(num, reverse=True)
+#asc = ascended
+#desc = descended (reversed)
+
+#TimSort - interesting to read
+
+
+#delete
+
+num = [5,2,7,3.8,0]
+num.pop() #->(index) num = [5,2,7,3.8] return number that deleted ->
+deleted_item = num.pop() #-> deleted_item = 0 
+del num[-1] #-> (index) num = [5,2,7,3.] doesnt return number tgat deleted
+
+num = [5,2,7,3.8,0]
+num.remove(7) #-> (not index, but value)num = [5,2,3.8,0] remove only first '7'
+
+num = [5,2,7,3.8,0,7,7]
+while 7 in num:
+    num.remove(7)
+print(num) #-> delete all '7' in num
+
+del = 0
+num = [5,2,7,3.8,0,7,7]
+while 7 in num and del !=2:
+    num.remove(7)
+    del += 1
+print(num) #-> delete second '7' in num

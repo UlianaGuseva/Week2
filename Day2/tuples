@@ -1,0 +1,25 @@
+#create
+a_tuple = (1,2,3,4,)
+
+b_tuple = 1,2,3
+
+#update
+b_tuple[0]
+b_tuple[0] = 1 #-> error. cannot change tuple
+
+
+a_tuple = (1,2,3,4,)
+a_tuple_list = list(a_tuple)
+b_tuple_list[0] = 2 # [index]
+b_tuple = tuple(b_tuple_list) #->2,2,3,4
+
+
+#delete
+#cannot del b_tuple[-1] (not mutable)
+
+#dividing data into mutliple variables
+func = 30, 100
+result1, result2 = func #-> result1=30 result2=100
+
+'Yossi, Eik'.split(',') #-> 'Yossi, Eik'
+first_name, lastname = 

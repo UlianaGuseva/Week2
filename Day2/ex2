@@ -1,0 +1,12 @@
+numer = input('input a number: ')
+numer = int(num)
+a = 0
+while a<11:
+    print(num*a)
+    a += 1
+    
+out = ''
+for num in range(a+1):
+    result = numer * num
+    out += f'({numer} X {num} = {result})\n'
+    print(out)    

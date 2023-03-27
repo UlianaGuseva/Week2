@@ -1,0 +1,172 @@
+#task1
+my_fav_numbers = {3,5,7,9}
+print("my_fav_numbers", my_fav_numbers)
+my_fav_numbers.add(27)
+my_fav_numbers.add(33)
+print("my new fav_numbers", my_fav_numbers)
+my_fav_numbers.pop()
+print("my new new fav_numbers", my_fav_numbers)
+friend_fav_numbers  = {3,6,7,8,33}
+our_fav_numbers = my_fav_numbers.union(friend_fav_numbers)
+print('our_fav_numbers', our_fav_numbers)
+
+#task2
+a_tuple = (1,2,3,4,)
+a_tuple_list = list(a_tuple)
+a_tuple_list.append(5) 
+a_tuple = tuple(a_tuple_list) 
+print(a_tuple)
+
+#task3
+basket = ["Banana", "Apples", "Oranges", "Blueberries"]
+basket.remove("Banana")
+del basket[-1]
+print(basket)
+basket.append('Kiwi')
+basket.insert(0, "Apples")
+print(basket)
+how_many_apples = basket.count("Apples")
+print(how_many_apples)
+del basket[:]
+print('basket is empty', basket)
+
+#task4
+list_float = []
+a = 1.0
+b = 0.5
+while a < 5:
+    a = a + b
+    
+    list_float.append(a)
+       
+else:
+    print(list_float)
+
+
+#task5
+for num in range(1, 21):
+    print(num)
+
+x = []    
+for i in range(1, 21):
+    if i%2==0:
+        x.append(i)
+print(x)
+
+#task6
+while True:
+    guess_my_name = input("guess_my_name: ")
+    if guess_my_name != 'Uliana':
+        print('no')      
+    else:
+        print('yes')
+        break
+    
+#task7
+favorite_fruits = input("input your favorite fruit(s) (one or several fruits). separate the fruits with a single space:" )
+favorite_fruits = favorite_fruits.split()
+print(favorite_fruits)
+any_fruit = input('input any fruit: ')
+if any_fruit in favorite_fruits:
+    print('You chose one of your favorite fruits! Enjoy!')
+else:
+    print('You chose a new fruit. I hope you enjoy')
+    
+#task8
+topping = ''
+all_toppings = []
+while True: 
+    topping = input('enter a series of pizza toppings. input quit to stop: ')
+    if topping != 'quit':
+        topping = topping.split()
+        all_toppings = all_toppings + topping
+    else:
+        break
+print('Ill add that topping to tour pizza')
+print('your choice: ', all_toppings)
+count_toppings = len(all_toppings)
+price = 10 + (2.5 * count_toppings)
+print('the price is: ', price)    
+
+#task9
+age_infant = input('number of children 0-2 years: ')
+age_child = input('number of children 3-12 years: ')
+age_adult = input('number of adults 12+ years: ')
+age_infant = int(age_infant)
+age_child = int(age_child)
+age_adult = int(age_adult)
+tickets = age_infant + age_child + age_adult
+price = (age_child * 10)+(age_adult * 15)
+print('Here is your', tickets, 'tickets. The price is', price)
+
+
+list_teens = ['bob', 'rob', 'shon', 'bill']
+index = 0
+list_ages = []
+while True:
+    number_teens = len(list_teens)-1
+    name_teen = list_teens[index]
+    age = input(f'age of {str(name_teen)}: ')
+    age = age.split()
+    list_ages = list_ages + age
+    if list_teens.index(name_teen) != number_teens:
+        index += 1 
+    else:
+        break
+index = 0
+while True:
+    number_teens = len(list_teens)-1
+    age = list_ages[index]
+    age = int(age)
+    if index != number_teens:
+        if age <= 21 and age >= 16:
+            del list_teens[index]
+            index += 1 
+        else:
+            index += 1
+    else:
+        break
+print(list_teens)    
+
+#task10
+sandwich_orders = ["Tuna sandwich", "Avocado sandwich", "Egg sandwich", "Sabih sandwich", "Pastrami sandwich"]
+finished_sandwiches = []
+sandwich_orders = set(sandwich_orders)
+finished_sandwiches = set(finished_sandwiches)
+while True:
+    if sandwich_orders != finished_sandwiches:
+        sandwich_done = input('add finished sandwich: ')
+        sandwich_done = sandwich_done.split('.')
+        sandwich_done = set(sandwich_done)
+        print(sandwich_done)
+        print(type(sandwich_done))
+        print(finished_sandwiches)
+        finished_sandwiches = finished_sandwiches.union(sandwich_done)
+        print(finished_sandwiches)
+    else:
+        break
+print('I made your',", ".join(finished_sandwiches))
+
+
+#task11
+sandwich_orders = ["Tuna sandwich", "Avocado sandwich", "Egg sandwich", "Pastrami sandwich", "Pastrami sandwich", "Sabih sandwich", "Pastrami sandwich"]
+finished_sandwiches = []
+print('the deli has run out of pastrami')
+while "Pastrami sandwich" in sandwich_orders:
+    sandwich_orders.remove('Pastrami sandwich')
+print('new order', sandwich_orders)
+sandwich_orders = set(sandwich_orders)
+finished_sandwiches = set(finished_sandwiches)
+while True:
+    if sandwich_orders != finished_sandwiches:
+        sandwich_done = input('add finished sandwich: ')
+        if sandwich_done == 'Pastrami sandwich':
+            print('cant make Pastrami sandwich. the deli has run out of pastrami.')
+        else:
+            sandwich_done = sandwich_done.split('.')
+            sandwich_done = set(sandwich_done)
+            finished_sandwiches = finished_sandwiches.union(sandwich_done)
+            print(finished_sandwiches)
+    else:
+        break
+print('I made your',", ".join(finished_sandwiches))
