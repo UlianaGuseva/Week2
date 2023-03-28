@@ -1,0 +1,29 @@
+numbers = []
+for num in range(100):
+    if num % 2 == 0:
+        numbers.append(num)
+        
+print(numbers)
+
+
+        #what_to_add for number in range(100)
+numbers = [num for num in range(100) if num % 2 == 0]
+print(numbers)
+
+alpha = 'абвгд'
+ru_dict = {}
+for i, char in enumerate(alpha):
+    ru_dict[i] = char
+    
+ru_dict = dict(enumerate(alpha))
+
+
+even_letters = [value for key, value in ru_dict.items() if key % 2 == 0]
+print('even', even_letters)
+
+even_letters = {key: value for key, value in ru_dict.items() if key % 2 == 0}
+print('even dict', even_letters)
+
+word = 'hello'
+w_dict = {index: char for index, char in enumerate(word)}
+print(w_dict)

@@ -1,0 +1,171 @@
+# #task1
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+
+keys = [key for key in keys]
+values = [num for num in values]
+
+connected = dict(zip(keys, values))
+
+print(connected)
+
+
+#task2
+total_cost = 0
+price = 0
+family = {"rick": 43, 'beth': 13, 'morty': 5, 'summer': 8}
+for key, value in family.items():
+       
+    value = int(value)
+    if value > 12:
+        price = 15
+        total_cost += price
+        print(key, price)
+    elif value >= 3:
+        price = 10
+        total_cost += price
+        print(key, price)
+    elif value < 3:
+        price = 0      
+print('Total price: ', total_cost)   
+
+names = []
+ages = []
+name = ()
+while True:
+    name = input('input name. If yoy want to stop input STOP  ')
+    if name != "STOP":
+        names.append(name)
+        print(names)
+        age = input('input age: ')
+        ages.append(age)
+        print(ages)
+    else:
+        break
+
+names = [name for name in names]
+print(names)
+ages = [age for age in ages]
+print(ages)
+
+family = dict(zip(names, ages))
+
+print(family)
+total_cost = 0
+price = 0
+
+for key, value in family.items():  
+    value = int(value)
+    if value > 12:
+        price = 15
+        total_cost += price
+        print(key, price)
+    elif value >= 3:
+        price = 10
+        total_cost += price
+        print(key, price)
+    elif value < 3:
+        price = 0   
+        print(key, price)  
+print('Total price: ', total_cost)  
+
+#task3
+brand = {"name": "Zara", 
+"creation_date": "1975", 
+"creator_name": "Amancio Ortega Gaona", 
+"type_of_clothes": ["men", "women", "children", "home"],
+"international_competitors": ["Gap", "H&M", "Benetton"], 
+"number_stores": "7000",
+"major_color":{ 
+    "France": "blue", 
+    "Spain": "red", 
+    "US": ["pink", "green"]}}
+
+brand['number_stores'] = '2'
+print(brand)
+
+print("Zaras clients are", brand['type_of_clothes'])
+
+brand.update({"country_creation": "Spain"})
+print(brand)
+
+brand.get('international_competitors').append("Desigual")
+print(brand) 
+
+removed = {"creation_date": brand.pop("creation_date")}
+print(brand) 
+print(removed)
+
+print(brand['international_competitors'][-1]) 
+
+print(brand["major_color"]["US"])
+
+print(len(brand))
+
+print(brand.keys())
+
+more_on_zara = removed 
+more_on_zara.update({"number_stores": "10 000"})
+print(more_on_zara)
+
+brand.update(more_on_zara)
+print(brand)
+
+print(brand["number_stores"])
+
+#task4
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+
+disney_users_A = {}
+for item in users:
+    index = users.index(item)
+    disney_users_A.update({item: index})
+print(disney_users_A)
+    
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+
+disney_users_B = {}
+for item in users:
+    index = users.index(item)
+    disney_users_B.update({index: item})
+print(disney_users_B)
+    
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+users.sort()
+disney_users_C = {}
+for item in users:
+    index = users.index(item)
+    disney_users_C.update({item: index})
+print(disney_users_C)
+
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+for item in users:
+    if "i" in item:
+        users = users
+    else:
+        users.remove(item)
+
+disney_users_D = {}
+for item in users:
+    index = users.index(item)
+    disney_users_D.update({item: index})
+print(disney_users_D)
+
+to_remote = []
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+for item in users:
+    if item.startswith("M") or item.startswith("P"):
+        print(users)
+    else:
+        print('remove ', item)
+        to_remote.append(item)
+for item in to_remote:
+    users.remove(item)
+
+print(users)
+
+disney_users_E = {}
+for item in users:
+    index = users.index(item)
+    disney_users_E.update({item: index})
+print(disney_users_E)

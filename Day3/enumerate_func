@@ -1,0 +1,8 @@
+alpha = 'абвгд'
+ru_dict = {}
+for i, char in enumerate(alpha):
+    ru_dict[i] = char
+    
+ru_dict = dict(enumerate(alpha))
+
+print(ru_dict)

@@ -1,0 +1,109 @@
+#task1
+word = input('print any word: ')
+word_list = list(word)
+word_dict = {}
+length = len(word_list)
+count = 0
+list_index = []
+while count < length:
+    print(count)
+    for char in word_list: 
+        i = word_dict.get(char)
+        print(i)
+        if i == None:
+            word_dict[char] = count
+            count += 1
+        else:
+            list_index = [i, count]
+            word_dict[char] = list_index
+            count += 1
+            
+print(word_dict)
+    
+#task2
+items_purchase = {
+  "Water": "$1",
+  "Bread": "$3",
+  "TV": "$1,000",
+  "Fertilizer": "$20"
+}
+wallet = "$300"
+
+for key, value in items_purchase.items():
+    value = value.replace('$', '')
+    value = value.replace(',', '')
+    value = int(value)
+    items_purchase[key] = value
+
+
+wallet = wallet.replace('$', '')
+wallet = int(wallet)
+
+can_afford = []
+for key, value in items_purchase.items():
+    if wallet - value > 0:
+        can_afford.append(key)
+if can_afford == []:
+    print('Nothing')
+else:   
+    print(can_afford)
+
+items_purchase = {
+  "Apple": "$4",
+  "Honey": "$3",
+  "Fan": "$14",
+  "Bananas": "$4",
+  "Pan": "$100",
+  "Spoon": "$2"
+}
+
+wallet = "$100" 
+
+
+for key, value in items_purchase.items():
+    value = value.replace('$', '')
+    value = value.replace(',', '')
+    value = int(value)
+    items_purchase[key] = value
+
+
+wallet = wallet.replace('$', '')
+wallet = int(wallet)
+
+can_afford = []
+for key, value in items_purchase.items():
+    if wallet - value > 0:
+        can_afford.append(key)
+if can_afford == []:
+    print('Nothing')
+else:   
+    print(can_afford)
+    
+items_purchase = {
+  "Phone": "$999",
+  "Speakers": "$300",
+  "Laptop": "$5,000",
+  "PC": "$1200"
+}
+
+wallet = "$1" 
+
+
+for key, value in items_purchase.items():
+    value = value.replace('$', '')
+    value = value.replace(',', '')
+    value = int(value)
+    items_purchase[key] = value
+
+
+wallet = wallet.replace('$', '')
+wallet = int(wallet)
+
+can_afford = []
+for key, value in items_purchase.items():
+    if wallet - value > 0:
+        can_afford.append(key)
+if can_afford == []:
+    print('Nothing')
+else:   
+    print(can_afford)

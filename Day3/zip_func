@@ -1,0 +1,13 @@
+numbers_1 = [num for num in range(11)]
+numbers_2 = [num for num in range(11, 22)]
+
+print(numbers_1)
+print(numbers_2)
+
+connected = list(zip(numbers_1, numbers_2))
+
+print(connected)
+
+connected = dict(zip(numbers_1, numbers_2))
+
+print(connected)

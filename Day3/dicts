@@ -1,0 +1,86 @@
+#create
+
+a_set = {1,2,3}
+
+a_dict = {100: 'And somth happend'} 
+
+b_dict = {'f_name': 'Yossi', 
+          'l_name': 'Eik', 
+          'age': 31, 
+          'residence': 'Tel Aviv', 
+          'languages': ['python', 'js', 'html']}
+
+#get data
+print(b_dict['f_name'])
+print(b_dict['languages'][0])
+
+b_dict.get('planet')
+b_dict.get('planet', 'earth') #return earth if 'planet' doesnt exist
+
+
+#add data
+
+b_dict['country'] = 'Israel'
+
+b_dict.update({'new': 'one', 'languages': ['python', 'js', 'html']})
+
+#delete
+removed = b_dict.pop('country')
+del b_dict['country']
+
+b_dict.clear() #remove all keys and values
+
+
+sample_dict = { 
+    "class":{ 
+       "student":{ 
+          "name":"Mike",
+          "marks":{ 
+             "physics":70,
+             "history":80
+          }
+       }
+    }
+ }
+history_mark = None
+current_dict = sample_dict
+while True:
+   if 'history' in current_dict:
+      history_mark = current_dict['history']
+      break
+   else:
+      for key in current_dict:
+         if isinstance(current_dict[key], dict):
+            current_dict = current_dict[key]
+            
+print(history_mark)
+   
+
+
+sample_dict['class']['student']['name']['history']
+print(sample_dict)
+
+for key, value in b_dict.items():
+for key in b_dict.keys():
+for value in b_dict.values():
+
+s= 'abcd'
+for char in s:
+   print(char)
+for i, char in enumerate(s):
+   print(i, char)
+enumerate(s)
+print(enumerate)
+
+sample_dict = {
+  "name": "Kelly",
+  "age":25,
+  "salary": 8000,
+  "city": "New york"
+
+}
+keys_to_remove = ["name", "salary"]
+for key in keys_to_remove:
+   del sample_dict[key]
+
+print(sample_dict)
