@@ -1,0 +1,11 @@
+The first exercise is perfect :)
+
+on the second exercise you get an error: 
+
+TypeError: 'list' object is not callable
+
+This error message usually occurs when you are trying to call an object as a function, but it is not a function.
+
+In your code, the error message is likely caused by the fact that you have used the variable name "list" somewhere in your code, which is shadowing the built-in Python function "list()". So, when you try to call the "list()" function later in your code, Python thinks that you are trying to call the variable "list" as a function, which is not possible.
+
+To fix this error, you can try renaming the variable "list" to something else, such as "string_list" or "my_list".
