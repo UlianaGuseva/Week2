@@ -30,7 +30,7 @@ items_purchase = {
 wallet = "$300"
 
 for key, value in items_purchase.items():
-    value = value.replace('$', '')
+    value = value.strip('$')
     value = value.replace(',', '')
     value = int(value)
     items_purchase[key] = value

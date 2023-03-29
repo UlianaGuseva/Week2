@@ -1,0 +1,106 @@
+# # #task1
+# # word = input('print any word: ')
+# # word_list = list(word)
+# # word_dict = {}
+# # length = len(word_list)
+# # count = 0
+# # list_index = []
+# # while count < length:
+# #     print(count)
+# #     for char in word_list: 
+# #         i = word_dict.get(char)
+# #         print(i)
+# #         if i == None:
+# #             word_dict[char] = count
+# #             count += 1
+# #         else:
+# #             list_index = [i, count]
+# #             word_dict[char] = list_index
+# #             count += 1
+            
+# # print(word_dict)
+
+# s= 'dodo'
+# frequenceies = {}
+# for i, letter in enumerate(s):
+#     if letter in frequenceies:
+#         frequenceies[letter].append(i)
+#     else:
+#         frequenceies[letter] = [i]
+        
+        
+# print(frequenceies)
+
+# items_purchase = {
+#   "Water": "$1",
+#   "Bread": "$3",
+#   "TV": "$1,000",
+#   "Fertilizer": "$20"
+# }
+# wallet = "$300"
+
+
+
+
+# # wallet = wallet.replace('$', '')
+# # wallet = int(wallet)
+
+# # can_afford = []
+# # for key, value in items_purchase.items():
+# #     value = value.strip('$')
+# #     value = value.replace(',', '')
+# #     items_purchase[key] = int(value)
+    
+# #     if wallet - value >= 0:
+# #         can_afford.append(key)
+# # if can_afford == []:
+# #     print('Nothing')
+# # else:   
+# #     print(can_afford)
+    
+    
+# items_purchase = {
+#   "Water": "$1",
+#   "Bread": "$3",
+#   "TV": "$1,000",
+#   "Fertilizer": "$20"
+# }
+# wallet = "$300"
+def calc_purch(item_prices: dict[str, str], wallet: str) -> list | str:
+    wallet = wallet.replace('$', '')
+    wallet = int(wallet)
+    can_afford = []
+    for key, value in items_purchase.items():
+        value = value.strip('$')
+        value = value.replace(',', '')
+        value = int(value)
+        items_purchase[key] = int(value)
+        
+        if wallet - value >= 0:
+            can_afford.append(key)
+    if can_afford == []:
+        print('Nothing')
+    else:   
+        print(can_afford)
+        
+            
+# items_purchase = {
+#   "Water": "$1",
+#   "Bread": "$3",
+#   "TV": "$1,000",
+#   "Fertilizer": "$20"
+# }
+# wallet = "$300"
+# print(calc_purch(items_purchase, wallet))
+
+items_purchase = {
+  "Apple": "$4",
+  "Honey": "$3",
+  "Fan": "$14",
+  "Bananas": "$4",
+  "Pan": "$100",
+  "Spoon": "$2"
+}
+
+wallet = "$100" 
+print(calc_purch(items_purchase, wallet))

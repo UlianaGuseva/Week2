@@ -1,0 +1,31 @@
+# def calculation(a, b) -> tuple[int, int]:
+#     add = a+b
+#     sub = a-b
+#     return add, sub 
+# res = calculation(5, 10)
+# print(res)
+
+# def sunny_dark(hour: int) -> str | None:
+#     if 10 < hour < 18:
+#         return "sunny"
+#     elif 24 > hour > 18 or 0< hour <10:
+#         return "dark"
+#     else:
+#         return None
+
+# print(sunny_dark(5))
+
+def generate_info( -> tuple[int, str]):
+    return 'Yossi', 'A'
+
+
+def concat_str(str1, str2) -> str:
+    concatenated = str1 + str2
+    return concatenated
+
+def summarize_info() -> str:
+    str1, str2 = generate_info
+    concatenated = concat_str(str1, str2)
+    return concatenated
+
+print(summarize_info())

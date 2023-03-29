@@ -1,0 +1,5 @@
+def full_info(*args) -> str:
+    for arg in args:
+        print(arg)
+        
+full_info("Lea", "30", "TLV")

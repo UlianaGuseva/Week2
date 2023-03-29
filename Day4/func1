@@ -1,0 +1,34 @@
+def print_smth() -> None:
+    print('Something') #retunn None
+
+for i in range(20):    
+    print_something()
+    
+print(print(1+2))
+
+l = [3,2,1]
+print(l.sort()) #retunn None
+
+l = [3,2,1]
+print(sorted(l)) #retunn sorted(l)
+
+
+def print_smth(num1, num2) -> int:
+    return num1 + num2
+print(add_two(1,2))
+
+def concat_str(str1, str2) -> str:
+    concatenated = str1 + str2
+    return concatenated
+print(concat_str('Hello', 'There'))
+res = concat_str('Hello', 'There')
+
+def separate_str(text) -> tuple[str, str]:
+    str1, str2 = text.split(' ')
+    return str1, str2
+
+str1. str2 = separate_str(res)
+print(str1)
+print(str1)
+
+print(type(separate_str(res)))
