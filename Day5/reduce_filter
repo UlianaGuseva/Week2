@@ -1,0 +1,27 @@
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+numbers_power2 = list(map(lambda n: n**2, numbers))
+
+print(numbers_power2)
+
+#reduce
+print(sum(numbers))
+
+numbers_sum = reduce(lambda n1, n2: n1+n2, numbers)
+
+print(numbers_sum)
+
+numbers = [1, 2, 3, 4]
+def calculate(n1, n2):
+    result = n1 ** 2 + n2 ** 3
+    return result
+calculated = reduce(calculate, numbers)
+print(calculated)
+
+
+#filter
+numbers = [1, 2, 3, 4]
+odds = list(filter(lambda n: n % 2 != 0, numbers))
+print(odds)
+
