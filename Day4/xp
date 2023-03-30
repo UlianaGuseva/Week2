@@ -1,0 +1,111 @@
+import random
+#task1
+def message(name) -> str:
+    print(name + ', you are learning in this cource') 
+
+message("Uliana")
+
+#task2
+def favorite_book(title) -> str:
+    print('One of my favorite books is', title)
+    
+favorite_book("Harry Potter")
+
+#task3
+def describe_city(city, country ="Israel") -> str:
+    print(city, 'is in', country)
+describe_city('Rishon')
+
+#task4
+def your_num(number) -> str:
+    random_num = random.randint(1, 100)
+    if number == random_num:
+        print("Success", number, 'and', random_num)
+    else:
+        print("Fail", number, 'and', random_num)
+        
+your_num(50)
+    
+#task5
+def make_shirt(size: str, text: str) -> str:
+    print("The size of the shirt is",'"', size, '"', "and the text is",'"'+ text+ '"')
+    
+make_shirt('medium', 'i love you') 
+
+def make_shirt(size= 'large', text= "I love Python") -> str:
+    print("The size of the shirt is",'"', size, '"', "and the text is",'"'+ text+ '"')
+    
+make_shirt() 
+make_shirt('medium') 
+make_shirt(text='i want to sleep', size='small')
+
+#task6
+magician_names = ['Harry Houdini', 'David Blaine', 'Criss Angel']
+
+def show_magicians(*args) -> list:
+    new_list_mag = []
+    for arg in args:
+        new_list_mag.append(arg)
+    print(new_list_mag)
+        
+show_magicians(magician_names)
+
+def make_great(mags):
+    for i in range(len(mags)):
+        mags[i] = "the Great " + mags[i]
+    # mags_list_new = []
+    # mags_list_new = list(map(lambda mag: 'the Great ' + mag, mags))
+    # mags = mags_list_new
+    print(mags)
+
+make_great(magician_names)  
+show_magicians(magician_names)
+
+#task7
+def get_random_temp():
+    random_temp = random.randint(-10, 40)
+    print(random_temp)
+    return(random_temp)
+        
+get_random_temp()
+
+def main():
+    temp =  get_random_temp()
+    print('The temperature right now is', temp, 'degrees Celsius.')
+    if temp < 0:
+        print('Brrr, that’s freezing! Wear some extra layers today')
+    elif 0 <= temp < 16:
+        print('Quite chilly! Don’t forget your coat')
+    elif 16 <= temp < 23:
+        print('nice')
+    elif 23 <= temp < 32:
+        print('Lets go to the beach')
+    elif 32 <= temp < 40:
+        print('Eifo Mazgan?')
+main()
+    
+def season_get_random_temp(season):
+    if season == "winter":
+        random_temp = random.uniform(-10.0, 10.0) 
+    elif season == "autumn":
+        random_temp = random.randint(0, 15)  
+    elif season == "summer":
+        random_temp = random.randint(20, 40) 
+    elif season == "spring":
+        random_temp = random.randint(10, 25)   
+    print(round(random_temp, 1))
+    return(round(random_temp, 1))
+input_season = input('input season: ')
+season_get_random_temp(input_season)
+
+input_month = input("input a number of month: ")
+input_month = int(input_month)
+if 2 < input_month < 6:
+    season = "spring"
+elif 5 < input_month < 9:
+    season = 'summer'
+elif 8 < input_month < 12:
+    season = 'autumn'
+else:
+    season = 'winter'
+season_get_random_temp(input_season)    
