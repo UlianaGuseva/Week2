@@ -127,40 +127,6 @@ def play():
             elif player == 'X':
                 player = 'O'
             
-        # player = 'X'   
-        # display_board(a, b, c, d, e, f, g, h, i)
-        # print(a, b, c, d, e, f, g, h, i)
-        # result = player_turn(a, b, c, d, e, f, g, h, i, player)
-        # print(result)
-         
-        
-        # display_board(a, b, c, d, e, f, g, h, i)
-        # print(a, b, c, d, e, f, g, h, i)
-        # player_turn(a, b, c, d, e, f, g, h, i, player)
-        # result = player_turn(a, b, c, d, e, f, g, h, i, player)
-        # print(result)
-        # if result[0] == "a":
-        #     a = result[1]
-        # elif result[0] == "b":
-        #     b = result[1] 
-        # elif result[0] == "c":
-        #     c = result[1]
-        # elif result[0] == "d":
-        #     d = result[1] 
-        # elif result[0] == "e":
-        #     e = result[1] 
-        # elif result[0] == "f":
-        #     f = result[1] 
-        # elif result[0] == "g":
-        #     g = result[1] 
-        # elif result[0] == "h":
-        #     h = result[1] 
-        # elif result[0] == "i":
-        #     i = result[1]    
-        # if a == b == c != ' ' or d == e == f != ' ' or g == h == i != ' ' or a == d == g != ' ' or b == e == h != ' ' or c == f == i != ' ' or a == e == i != ' ' or c == e == g != ' ':
-        #     print('O winner!')
-        #     winner = "yes"
-        # else:
-        #     break
+       
         
 play()
