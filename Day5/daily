@@ -1,0 +1,6 @@
+list_input = input('write a list eou want to sort (separate with comma): ')
+list_input = list_input.split(',')
+list_input.sort()
+
+ordered_list = [x for x in list_input]
+print(','.join(ordered_list))
