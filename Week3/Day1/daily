@@ -1,0 +1,44 @@
+class Farm:
+    def __init__(self, name):
+        self.name = name
+        self.animals = {}
+    def add_animal(self, new_animal, quant = 1):
+        if self.animals.get(new_animal) == None:
+            self.animals.get(new_animal)
+            self.animals[new_animal] = quant
+        else: 
+            self.animals[new_animal] += quant
+            
+    def get_info(self):
+        print('McDonald’s farm \n')
+        for key, value in self.animals.items():
+            print(f'{key} : {value}')
+        print('\n  E-I-E-I-0!')
+        
+    def get_animal_types(self):
+        list_animals = sorted(list(self.animals.keys()))
+        print(list_animals)
+        return(list_animals)
+        
+    def get_short_info(self):
+        list_animals = self.get_animal_types()
+        string_animals = ''
+        for i in range(len(list_animals)):
+            if i == 0:
+                string_animals = list_animals[i] 
+            elif i == len(list_animals)-1:
+                string_animals += ' and ' + list_animals[i] 
+            else:
+                string_animals += ', ' + list_animals[i] 
+
+            
+        print(self.name, 'farm has', string_animals)
+        
+macdonald = Farm("McDonald")
+macdonald.add_animal('cow', 5)
+macdonald.add_animal('sheep')
+macdonald.add_animal('sheep')
+macdonald.add_animal('goat', 12)
+print(macdonald.get_info())
+macdonald.get_animal_types()
+macdonald.get_short_info()

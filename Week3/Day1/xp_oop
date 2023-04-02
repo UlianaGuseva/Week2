@@ -1,0 +1,132 @@
+#task1
+class Cat:
+    def __init__(self, cat_name, cat_age):
+        self.name = cat_name
+        self.age = cat_age
+ 
+ 
+cats = []       
+cats.append(Cat('Garfild', 12))
+cats.append(Cat('Tom', 6))
+cats.append(Cat('Cheshire', 25))
+
+def oldest(cats):
+    ages = []
+    for i in cats:
+        ages.append(i.age)
+    for i in cats:
+        if i.age == max(ages):
+            print(f'The oldest cat is {i.name}, and is {i.age} years old.')
+            break
+        
+oldest(cats)
+
+#task2
+class Dog:
+    def __init__(self, dog_name, dog_height):
+        self.name = dog_name
+        self.height = dog_height
+    def bark(self):
+        print(f'{self.name} Gos woof!') 
+    def jump(self):
+        x = self.height * 2
+        print(f'{self.name} jumps {x} cm high!')
+        
+david_dog = Dog('Rex', 50)
+print(david_dog.name)
+print(david_dog.height)
+david_dog.bark()
+david_dog.jump()
+              
+sarahs_dog = Dog('Teacup', 20)
+print(sarahs_dog.name)
+print(sarahs_dog.height)
+sarahs_dog.bark()
+sarahs_dog.jump()
+
+
+
+if david_dog.height > sarahs_dog.height:
+    print('the name of the bigger dog -', david_dog.name)
+else:
+    print('the name of the bigger dog -', sarahs_dog.name)
+    
+    
+#task3
+class Song:
+    def __init__(self, song_lyrics):
+        self.lyrics = song_lyrics
+    def sing_me_a_song(my_song):
+        for i in my_song.lyrics:
+            print(i)
+            
+stairway= Song(["There’s a lady who's sure","all that glitters is gold", "and she’s buying a stairway to heaven"])
+
+stairway.sing_me_a_song()
+
+#task4
+class Zoo:
+    def __init__(self, zoo_name):
+        self.animals = []
+        self.name = zoo_name
+    def add_animal(self, new_animal):
+        if not new_animal in self.animals:
+            self.animals.append(new_animal)
+    def get_animals(self):
+        print(self.animals)
+    def sell_animal(self, animal_sold):
+        if animal_sold in self.animals:
+            self.animals.remove(animal_sold)
+    def sort_animals(self):
+        animals_dict = {}
+        self.animals.sort()
+        counter = 1
+        part_list = []
+        for i in range(len(self.animals)):
+            if i == 0:
+                part_list.append(self.animals[i])
+                animals_dict[counter] = part_list
+            elif i != 0:
+                if self.animals[i][0] == self.animals[i-1][0]:
+                    part_list.append(self.animals[i])
+                    animals_dict[counter] = part_list
+                else:
+                    counter +=1
+                    part_list = []
+                    part_list.append(self.animals[i])
+                    animals_dict[counter] = part_list
+        print(animals_dict)
+            
+                    
+                    
+                
+                
+            # if i[0] in [k for k in animals_dict.keys]:
+            #     animals_dict[i[0]].append(i)
+            # else:
+            #     animals_dict[i[0]] = []
+                
+            # # first_word = self.animals[ind]
+            # # second_word = self.animals[ind+1]
+            # # if first_word[0] == second_word[0]:
+            # #     dict[key] = [self.animals[ind], self.animals[ind+1]]
+            
+            
+        # key = 1
+        # for i in self.animals:
+        #     f_letter = i[0]
+        #     if f_letter == 
+    
+            
+ramat_gan_safari = Zoo("ramatgan") 
+ramat_gan_safari.animals = ['Ape', 'Cat', 'Emu', 'Baboon', 'Eel', 'Cougar', 'Bear']
+ramat_gan_safari.add_animal("Giraffe")
+ramat_gan_safari.get_animals()
+ramat_gan_safari.sell_animal("Giraffe")
+ramat_gan_safari.get_animals()
+ramat_gan_safari.sort_animals()
+
+
+
+
+ 

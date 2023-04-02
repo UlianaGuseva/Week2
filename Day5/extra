@@ -1,0 +1,69 @@
+#task1
+my_list = [1, 2, 3, 4, 5]
+my_list.insert(2, 'i')
+print(my_list)
+
+#task2
+my_string = "sdf dfgre fvr wd 1213 "
+list_string = list(my_string)
+print(list_string)
+count = 0
+for char in list_string:
+    if char == " ":
+        count += 1
+print(count)  
+
+#task3
+my_string = "sDf dfGre fVr Wd 1213 "
+print(f'Upper: {sum(map(str.isupper, my_string))}, lower: {sum(map(str.islower, my_string))}')
+
+#task4
+def my_sum(nums):
+    numsum = 0
+    for num in nums:
+        numsum += num
+    print(numsum)
+    
+my_sum([1,5,4,2])
+
+#task5
+def find_max(nums):
+    for num in nums:
+        max_num = num
+        if max_num < num:
+            max_num = num
+    print(max_num)        
+            
+find_max([0,1,3,50])
+
+#task6
+def factorial(n):
+    fact = 1
+    for i in range(1, n+1):
+        fact = fact * i
+    print(fact)
+factorial(4)
+
+#task7
+def list_count(my_list):
+    summ_elements = 0
+    for element in my_list:
+        summ_elements += 1
+    print(summ_elements)
+    
+list_count([['a','a','t','o'],'a'])
+    
+#task8
+def norm(nums):
+    sum_sqr = 0
+    for num in nums:
+        sum_sqr += num * num
+    sqrt = sum_sqr ** 0.5 
+    print(sqrt)
+    
+norm([1,2,2])
+
+#task9
+def is_mono(my_list):
+    for i in range(my_list):
+        if my_list[i] >= 
