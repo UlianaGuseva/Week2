@@ -1,0 +1,71 @@
+#task1
+
+class Pets():
+    def __init__(self, animals):
+        self.animals = animals
+
+    def walk(self):
+        for animal in self.animals:
+            print(animal.walk())
+
+class Cat():
+    is_lazy = True
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def walk(self):
+        return f'{self.name} is just walking around'
+
+class Bengal(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+
+class Chartreux(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'  
+    
+class Siamese(Cat):
+    def __init__(self, name, age):
+        super().__init__(name, age)
+
+bengal = Bengal('Beni', 2)
+chartreux = Chartreux("Chari", 3)
+siamese = Siamese('Siama', 5)
+        
+all_cats = [bengal, chartreux, siamese]
+
+sara_pets = Pets(all_cats)
+
+for i in all_cats:
+    print(i.walk())
+    
+# #task2
+
+class Dog():
+    def __init__(self, name, age, weight):
+        self.name = name
+        self.age = age
+        self.weight = weight
+        
+    def bark(self):
+        return f'{self.name} is barking'
+    def run_speed(self):
+        return self.weight / self.age * 10
+    def fight(self, other_dog):
+        if other_dog.run_speed() * other_dog.weight > self.run_speed() * self.weight:
+            return f'{other_dog.name} is winner'
+        else:
+            return f'{self.name} is winner'
+        
+if __name__ == '__main__':           
+    dog1 = Dog("Dog1", 3, 10)
+    dog2 = Dog("Dog2", 5, 17)
+    other_dog = Dog("Dog3", 1, 6)
+
+    print(dog1.fight(other_dog))
+
+
+
+

@@ -1,0 +1,63 @@
+class Family():
+    def __init__(self, last_name):
+        self.last_name = last_name
+    def born(self, kwargs):
+        self.members.append(kwargs)
+        print('congratulates!')
+    def is_18(self, some_name):
+        for i in self.members:
+            if i['name'] == some_name:
+                if i['age'] > 18:
+                    return True 
+                else:
+                    return False
+    def family_presentation(self):
+        presentation = self.last_name + '-'
+        for i in self.members:
+            presentation += ' ' + i['name'] + ','
+        print(presentation)
+            
+        
+        
+        
+my_family = Family('Smith')
+my_family.members = [
+    {'name':'Michael','age':35,'gender':'Male','is_child':False},
+    {'name':'Sarah','age':32,'gender':'Female','is_child':False}
+]
+
+shon = {'name':'Shon','age':0,'gender':'Male','is_child':True}
+my_family.born(shon)
+
+my_family.is_18("Sarah")
+my_family.family_presentation()
+
+#task2
+class TheIncredibles(Family):
+    def __init__(self, last_name):
+        super().__init__(last_name)
+    def use_power(self):
+        for i in self.members:
+            if i['age'] > 18:
+                print(i['power'])
+            else:
+                print('you are not over 18 years old')
+    def incredible_presentation(self):
+        self.family_presentation()
+        presentation_incredible = ''
+        for i in self.members:
+            presentation_incredible += i['incredible_name'] + ' - ' + i['power'] + ', '
+        print(presentation_incredible)
+                
+        
+        
+super_family = TheIncredibles('Smooth')
+super_family.members = [
+    {'name':'Michael','age':35,'gender':'Male','is_child':False,'power': 'fly','incredible_name':'MikeFly'},
+    {'name':'Sarah','age':32,'gender':'Female','is_child':False,'power': 'read minds','incredible_name':'SuperWoman'}
+]
+super_family.incredible_presentation()
+
+jack = {'name':'Baby Jack','age':3,'gender':'Male','is_child':True,'power': 'Unknown Power','incredible_name':'Baby Jack'}
+super_family.born(jack)
+super_family.incredible_presentation()

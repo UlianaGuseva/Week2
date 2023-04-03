@@ -1,0 +1,71 @@
+class Animal: #parent
+
+    def __init__(self, name: str):
+        self.name = name
+
+    def breathing(self):
+        out = f'{self.name} breaths'
+        print(out)
+
+class Mammal(Animal): #child
+    def __init__(self, name: str, lungs: int):
+        super().__init__(name)
+        print(type(self))
+        self.lungs = lungs
+
+    def produce_milk(self):
+        out = f'{self.name} produces milk'
+        print(out)
+    
+
+
+class SeaMammal(Mammal):
+
+    def __init__(self, name: str, lungs: int):
+        super().__init__(name, lungs)
+        self.fins = True
+       
+    def hold_breath(self):
+        out = f'{self.name} holds breath'
+        print(out)
+
+
+mammal = SeaMammal('dolphin')
+mammal.breathing()
+dolphin.produce_milk()
+dolphin = Mammal('dolphin')
+
+# m = Mammal('m', 2)
+
+# dolphin = SeaMammal ('dolphin', 2)
+
+
+# class Door: 
+
+#     def __init__(self):
+#         self.is_opened = False
+#     def open(self):
+#         self.is_opened = True
+#         print(self.is_opened)
+
+#     def close(self):
+#         self.is_opened = False
+#         print(self.is_opened)
+
+# class BlockedDoor(Door):
+#     def open(self):
+#         func_name = self.open.__name__
+#         raise TypeError(f'{func_name}: Blocked door can not be opened')
+#     def close(self):
+#         raise TypeError('Blocked door can not be closed')
+    
+
+
+# blocked = BlockedDoor()
+# try:
+#     blocked.open()
+# except TypeError:
+#         print('smone is trying to open a blocked door')
+
+
+  

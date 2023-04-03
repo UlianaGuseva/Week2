@@ -1,0 +1,84 @@
+class Pagination():
+    def __init__(self, items: [], pageSize: 10):
+        self.items = items
+        self.pageSize = pageSize
+        self.current_page = 1
+        self.total_pages = int
+    
+    def getVisibleItems(self):
+        visible_items = [] 
+        count = self.current_page * self.pageSize
+        if len(self.items) / int(self.pageSize) < self.current_page:
+            for b in range(count - self.pageSize, count - len(self.items) % self.pageSize):
+                visible_items.append(self.items[b])
+        else:
+            for b in range(count - int(self.pageSize), count):
+                visible_items.append(self.items[b])
+        print(visible_items)
+        return self.current_page
+
+    def prevPage(self):
+        self.getVisibleItems
+        self.current_page -= 1
+        return self.current_page  
+        
+    def nextPage(self):
+        self.getVisibleItems
+        self.current_page += 1
+        return self.current_page
+ 
+    def firstPage(self):
+        self.current_page = 1
+        return self.current_page
+        
+    def lastPage(self):
+        if len(self.items) % int(self.pageSize) != 0:
+            self.current_page = int(len(self.items) / self.pageSize)+1
+        else:
+            self.current_page = int(len(self.items) / self.pageSize) 
+        return self.current_page
+
+    def goToPage(self, pageNum):
+        pageNum = int(pageNum)
+        if len(self.items) % int(self.pageSize) != 0:
+            self.total_pages = int(len(self.items) / self.pageSize)+1
+        else:
+            self.total_pages = int(len(self.items) / self.pageSize)
+        if pageNum > self.total_pages:
+            self.current_page = self.total_pages
+        elif pageNum <= 0:
+            self.current_page = 1
+        else:
+            self.current_page = pageNum
+        return self.current_page
+        
+        
+   
+    
+    
+alphabetList = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split(' ')
+
+p = Pagination(alphabetList, 4)
+p.current_page = 1
+p.getVisibleItems()
+
+p.nextPage()
+
+p.getVisibleItems()
+
+p.prevPage()
+p.getVisibleItems()
+# p.nextPage().nextPage()
+# p.getVisibleItems()
+
+
+p.lastPage()
+p.getVisibleItems()
+  
+p.firstPage() 
+p.getVisibleItems()
+     
+p.goToPage(4)
+p.getVisibleItems()
+
+

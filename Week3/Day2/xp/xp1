@@ -1,0 +1,47 @@
+import random
+from exercise import Dog
+
+class PetDog(Dog):
+    def __init__(self, name, age, weight):
+        super().__init__(name, age, weight)
+        self.trained = False
+        
+    def train(self):
+        print(self.bark())
+        self.trained = True
+    
+    def play(*args):
+        string_names = ''
+        for arg in args:
+            string_names +=' '+str(arg.name)+' and'
+        string_names = string_names.split(' ')
+        del string_names[-1]        
+        print((" ".join(string_names)), 'all play together')
+                
+    def do_a_trick(self):
+        if self.trained == True:
+            sentence = random.randint(1, 4)
+            if sentence == 1:
+                print(self.name, 'does a barrel roll')
+            elif sentence == 2:
+                print(self.name, 'stands on his back legs')
+            elif sentence == 3:
+                print(self.name, 'shakes your hand')
+            else:
+                print(self.name, 'plays dead')
+
+
+dog1 = PetDog("Dog1", 3, 10)
+dog2 = PetDog("Dog2", 5, 17)
+dog3 = PetDog("Dog3", 1, 6)
+                
+dog1.train()
+dog1.do_a_trick()
+
+dog1.play(dog2, dog3)
+
+                
+                
+            
+    
+    

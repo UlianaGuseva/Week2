@@ -1,0 +1,24 @@
+password = 1234
+
+user_pass = int(input('password: '))
+
+class Pass:
+    def __init__(self):
+        self.password = password
+        self.user_pass = user_pass
+    
+    def check(self):
+        if user_pass != password:
+            raise ValueError
+            
+
+        
+my_password = Pass()
+my_password.password = 1234
+my_password.user_pass = int(input('password: '))
+
+try:
+    my_password.check() 
+except ValueError:
+        print('Invalid input')
+
