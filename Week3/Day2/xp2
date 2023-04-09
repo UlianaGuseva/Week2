@@ -1,9 +1,10 @@
 class Family():
     def __init__(self, last_name):
         self.last_name = last_name
-    def born(self, kwargs):
+    def born(self, **kwargs):
         self.members.append(kwargs)
-        print('congratulates!')
+        name = kwargs['name']
+        print('congratulates!', name)
     def is_18(self, some_name):
         for i in self.members:
             if i['name'] == some_name:
@@ -27,7 +28,7 @@ my_family.members = [
 ]
 
 shon = {'name':'Shon','age':0,'gender':'Male','is_child':True}
-my_family.born(shon)
+my_family.born(**shon)
 
 my_family.is_18("Sarah")
 my_family.family_presentation()
@@ -59,5 +60,5 @@ super_family.members = [
 super_family.incredible_presentation()
 
 jack = {'name':'Baby Jack','age':3,'gender':'Male','is_child':True,'power': 'Unknown Power','incredible_name':'Baby Jack'}
-super_family.born(jack)
+super_family.born(**jack)
 super_family.incredible_presentation()

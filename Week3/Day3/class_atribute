@@ -1,0 +1,20 @@
+class Object:
+    number_object_created = 0
+    objects = {}
+
+    def __init__(self) -> None:
+        Object.objects[Object.number_object_created] = self
+        Object.number_object_created += 1
+        
+        
+Object()
+Object()
+Object()
+Object()
+Object()
+Object()
+
+print(Object.number_object_created)
+
+print(Object.objects)
+

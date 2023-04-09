@@ -1,0 +1,25 @@
+class Object:
+    number_object_created = 0
+    objects = {}
+
+    def __init__(self) -> None:
+        Object.objects[Object.number_object_created] = self
+        Object.number_object_created += 1
+    @classmethod
+    def find_object(cls, id:int):#cls - class
+        if id in cls.objects:
+            object_retrieved = cls.objects[id]
+            print(object_retrieved)
+            return object_retrieved
+        else:
+            print(f'No such obj with id {id}')
+                
+        
+Object()
+Object()
+Object()
+Object()
+Object()
+Object()
+
+Object.find_object(2)

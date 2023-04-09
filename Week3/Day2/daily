@@ -51,6 +51,9 @@ class Pagination():
         else:
             self.current_page = pageNum
         return self.current_page
+    
+    def __str__(self) -> str:
+        return str(self.get_visible_items())
         
         
    

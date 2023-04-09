@@ -1,0 +1,22 @@
+class Person:
+    def __init__(self, name) -> None:
+        self.__name = name #__name - name is privat!
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, new_value: str):
+        self.__name = new_value
+        
+person = Person('David')
+# print(person.__name) #-> error
+print(person.__dict__)
+print(person._Person__name)
+
+
+print(person.name) #-> from @property it works
+
+person.name = 'Ben' #-> error cant change attribute, can do it only with @name.setter
+print(person.name)
+
