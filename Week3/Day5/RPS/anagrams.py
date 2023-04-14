@@ -37,6 +37,8 @@ def main():
             valid = AnagramChecker.is_valid_word(my_anagram, choise) 
             if valid == True:
                 anagram_list = AnagramChecker.get_anagrams(my_anagram, choise)
+                anagram_list = ', '.join(anagram_list)
+                anagram_list = anagram_list.lower()
                 print('Your word', choise, '\nthis is valid English word.\nAnagrams for your word: ', anagram_list)
             else:
                 print('This is not a valid English word')

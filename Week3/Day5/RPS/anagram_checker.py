@@ -8,10 +8,8 @@ class AnagramChecker:
         word = word.upper()
         # print(self.list_words)
         if word in self.list_words:
-            print('true')
             return True
         else:
-            print('false')
             return False
     def get_anagrams(self, word):
         word = word.upper()
