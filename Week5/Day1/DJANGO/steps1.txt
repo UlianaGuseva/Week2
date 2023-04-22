@@ -1,0 +1,39 @@
+
+create project
+1) in terminal - django-admin startproject mysite
+                    OR python django startproject mysite
+
+2) cd mysite
+
+manage.py is the project runner (runs server, runs tests)
+
+3) python manage.py startapp polls
+
+4) Add "polls" into INSTALLED_APPS in mysite.settings.py
+
+5) inside polls.views.py create a views
+from django.http import HttpResponse
+        return HttpResponse("<h1>Home page</h1>")
+6) inside mysite.urls.py
+        -from polls.views import index
+        - add a path to the index view ( path("index/", index))
+
+7) in terminal     python manage.py runserver (choose a link and see)
+
+8) create the templates folder inside the app polls
+
+9) inside tempates create index.html
+
+10) in views:
+def index(request):
+    # return HttpResponse("<h1>Home page</h1>")
+    context = {'weather': 'warm'}
+    return render(request, 'index.html', context)
+
+11) add {{context}} in html
+
+12) conditions
+
+{%if current_hour < 12  %}
+        Morning
+{%endif%}
