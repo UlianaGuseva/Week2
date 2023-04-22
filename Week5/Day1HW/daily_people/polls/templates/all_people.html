@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>People info</title>
+    </head>
+    <body>
+        {% for i in people %}
+        <li>{{ i.name | title }} age {{ i.age}} live in {{i.country}}</li> 
+        {%endfor%}
+        
+
+    </body>
+</html>
