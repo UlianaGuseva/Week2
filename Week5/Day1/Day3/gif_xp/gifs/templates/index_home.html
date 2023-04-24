@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>Gifs</title>
+    
+  </head>
+  <body>
+    <div>
+        <a href="{% url 'addgif' %}">Add new GIF</a>
+        <a href="{% url 'addcategory' %}">Add new Category</a>
+    </div>    
+
+    
+    {%for i in data%}
+    <div> <img src="{{i.url}}"> </div>
+    {%endfor%}
+
+   
+            
+
+
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+Implementing databases
+
+1. in settings.py specify the DATABASES part
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '<db_name>',
+        'USER': '<db_username>',
+        'PASSWORD': '<password>',
+        'HOST': '<db_hostname_or_ip>',
+        'PORT': '<5432>',
+    }
+}
+
+HOSTNAME = 'localhost'
+USERNAME = 'postgres'
+PASSWORD = 'S@mbation1'
+DATABASE = 'countries'
+
+2. create new database in PgAdmin 
+
+3. in terminal: pip install psycopg2 (or psycopg2-binary ) if you need
+
+4. in terminal: python manage.py migrate
+
+5. specify models inside the app folder, inside models.py
+    to create Class and name the fields and its type
+    id creates automatically
+
+6. in terminal: python manage.py makemigrations
+
+7. in terminal: python manage.py migrate
+
+8. in terminal: python manage.py shell
+(open like new terminal in terminal)
+add new item of table:
+    from info.models import Animal, Family
+    felidae = Family(name='Felidae')
+    felidae.save()
+
+9. to add to table, that union with some else table - first define table that you will connect to
+
+    felidae = Family.objects.get(name='Felidae')
+    animal = Animal(name='Domestic Cat', legs=4, weight = 5.67, height = 4.2, speed = 34, family = felidae)
+    animal.save()
+
+10. to get multiple instanse
+all_animals = Animal.objects.all()
+all_animals
+all_animals[0].name
+
+all_felidae = Animal.objects.filter(family__name='Felidae')
+all_felidae
+
+
+

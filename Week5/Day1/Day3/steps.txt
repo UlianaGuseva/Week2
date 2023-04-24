@@ -1,0 +1,17 @@
+in html
+
+make the 'base.html'
+
+{%block content%}
+
+some content
+{%endblock%}
+
+in other html
+
+{%extends 'base.html'%}
+
+in settings:
+TEMPLATES 
+DIRS : [Path(BASE_DIR, 'tempates')]
+
