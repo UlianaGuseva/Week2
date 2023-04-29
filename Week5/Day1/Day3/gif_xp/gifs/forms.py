@@ -1,13 +1,15 @@
 from django import forms
-from .models import Category
+from .models import Gif, Category
 
-class Gif(forms.Form):
-    name = forms.CharField(max_length=50)
-    url = forms.URLField()
-    uploader_name = forms.CharField(max_length=50)
+class GifForm(forms.ModelForm):
+    class Meta:
+        model = Gif
+        fields = ('name', 'url', 'uploader_name')
+        exclude = ('likes',)
     categories = forms.ModelMultipleChoiceField(queryset=Category.objects.all())
     
-    
-class Category(forms.Form):
-    name = forms.CharField(max_length=50)
-    
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
+

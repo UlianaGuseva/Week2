@@ -5,12 +5,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': '<db_name>',
-        'USER': '<db_username>',
-        'PASSWORD': '<password>',
-        'HOST': '<db_hostname_or_ip>',
-        'PORT': '<5432>',
+        'USER': 'postgres',
+        'PASSWORD': 'S@mbation1',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 HOSTNAME = 'localhost'
 USERNAME = 'postgres'
@@ -51,6 +52,8 @@ all_animals[0].name
 
 all_felidae = Animal.objects.filter(family__name='Felidae')
 all_felidae
+
+
 
 
 

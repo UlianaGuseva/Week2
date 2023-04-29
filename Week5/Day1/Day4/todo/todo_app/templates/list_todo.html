@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>To Do List</title>
+    
+  </head>
+  <body>
+{%for i in data%}
+{{i.title}}  |  {{i.details}}  | created: {{i.date_creation}}  |  deadline: {{i.deadline_date}}  |  category {{i.category}} | <a href="{%url "dotask" i.id%}"> <button type="submit">DONE</button> </a> <br><br>
+{%endfor%}
+    {% comment %} <form method='post'>
+        {% csrf_token %}
+    {{form}}<br>
+    <button type="submit">Add task</button> {% endcomment %}
+
+    
+</html>
+

@@ -1,0 +1,18 @@
+{%block title%}
+Vehicle Details <br>
+{%endblock title%}
+
+{%block content%}
+        info: <br>
+        
+        vehicle type : {{info.vehicle_type}} {{info.last_name}} <br> 
+        date created: {{info.date_created}} <br> 
+        real cost: {{info.real_cost}}  <br>
+        size : {{info.size}} <br>
+{%if is_rented%}
+is rented now: yes
+{%else%}
+is rented now: no
+{%endif%}
+{%endblock content%}
+

@@ -1,0 +1,10 @@
+{%block title%}
+ADD CUSTOMER <br>
+{%endblock title%}
+   
+{%block content%}
+   <form method='post'>
+        {% csrf_token %}
+    {{form}}<br>
+    <button type="submit">Add customer</button>
+{%endblock content%}

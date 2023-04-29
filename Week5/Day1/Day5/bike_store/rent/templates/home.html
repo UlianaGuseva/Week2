@@ -1,0 +1,27 @@
+{%block title%}
+Home <br>
+{%endblock title%}
+   
+{%block content%}
+    <a href='{%url 'all_rental'%}'>All rentals</a><br>
+   <form method='post'>
+    {% csrf_token %}
+{{form_vehicle.id_r}}
+<button type="submit">Find rental</button><br>
+   </form>
+   <a href='{%url 'add_rental'%}'>Add rental</a><br>
+   <form method='post'>
+    {% csrf_token %}
+{{form_vehicle.id_c}}
+<button type="submit">Find customer</button><br>
+</form>
+   <a href='{%url 'all_customers'%}'>All customers</a><br>
+   <a href='{%url 'add_customers'%}'>Add customers</a><br>
+   <a href='{%url 'all_vehicle'%}'>All vehicles</a><br> 
+   <form method='post'>
+    {% csrf_token %}
+{{form_vehicle.id_v}}
+<button type="submit">Find vehicle</button><br>
+ </form>
+   <a href='{%url 'add_vehicle'%}'>Add vehicle</a> 
+{%endblock content%}

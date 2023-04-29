@@ -10,7 +10,12 @@
     
    
    <div>  id - {{gif.id}} | name - {{gif.name}} | uploader - {{gif.uploader_name}} | created at - {{gif.created_at}} <br> <img src="{{gif.url}}"> </div>
-   
+   <div> <form method="post" action="{% url 'getgif' gif.id %}">
+    {% csrf_token %} <button type="submit" name="like" value="1">Like</button>
+    <button type="submit" name="like" value="-1">Dislike</button>
+  </form>
+
+   </div>
 
    
             

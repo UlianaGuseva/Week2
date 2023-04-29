@@ -1,0 +1,6 @@
+{%extends 'base.html'%}
+{%block content%}
+    {% for i in data%}
+    <div><a href="{% url 'getcategory' i.id %}">{{i.name}}</a></div>
+    {% endfor %}
+{%endblock%}

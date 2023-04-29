@@ -22,5 +22,6 @@ from polls.models import Person
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('persons/<str:info>', views.get_by_data, name='by_data'),
+    path('findperson/', views.find_person, name='find_person'),
     
 ]

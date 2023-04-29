@@ -23,8 +23,9 @@ urlpatterns = [
     path('', views.Homepage, name='homepage'),
     path('addgif/', views.add_gif, name='addgif'),
     path('addcategory/', views.add_category, name='addcategory'),
-    path('category/<int:id>', views.get_category, name='getategory'),
+    path('category/<int:id>', views.get_category, name='getcategory'),
     path('gif/<int:id>', views.get_gif, name='getgif'),
-    
+    path('categories/', views.all_categories, name='getgif'),
+    path('best/', views.best, name='bestgifs'),    
     
 ]
