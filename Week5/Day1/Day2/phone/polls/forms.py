@@ -1,7 +1,10 @@
+from django.contrib import admin
+from django.db import models
 from django import forms
 from .models import Person
 from phonenumber_field.formfields import PhoneNumberField
-from phonenumber_field.widgets import PhoneNumberPrefixWidget
+from phonenumber_field.widgets import PhoneNumberPrefixWidget, PhoneNumberInternationalFallbackWidget
+
 
 class NewPersonForm(forms.ModelForm):
     class Meta:
@@ -19,4 +22,7 @@ class NewPersonForm(forms.ModelForm):
         self.fields['phone_number'].required = False
         self.fields['name'].required = False
         
-    
+class MyModelAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        PhoneNumberField: {'widget': PhoneNumberInternationalFallbackWidget},
+    }

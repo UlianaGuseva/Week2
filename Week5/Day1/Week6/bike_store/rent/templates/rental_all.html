@@ -1,0 +1,13 @@
+{%block title%}
+ALL RENTALS <br>
+{%endblock title%}
+
+        {%block content%}
+        Unreturned: <br>
+        {%for i in rentals%}
+        <a href="{% url 'one_rental' i.id%}">
+        {{i.rental_date}} | {{i.customer.first_name}} {{i.customer.last_name}} | vehicle id: {{i.vehicle.id}} <br>
+        </a>
+        {%endfor%} 
+
+    {%endblock content%}

@@ -1,0 +1,13 @@
+{%block title%}
+ONE RENTAL Details <br>
+{%endblock title%}
+
+{%block content%}
+        info: <br>
+        
+        rental date : {{info.rental_date}} <br> 
+        return date: {{info.return_date}} <br> 
+        customer: {{info.customer.first_name}} {{info.customer.last_name}} <br>
+        vehicle id: {{info.vehicle.id}} <br>
+
+{%endblock content%}

@@ -1,0 +1,12 @@
+{%block title%}
+ALL VEHICLES <br>
+{%endblock title%}
+
+        {%block content%}
+        {%for i in info%}
+        <a href="{% url 'one_vehicle' i.id%}">
+        id: {{i.id}} | {{i.size.name}} {{i.vehicle_type.name}}   <br>
+        </a>
+        {%endfor%} 
+        {%endblock content%}
+
