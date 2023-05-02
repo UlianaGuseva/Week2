@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {%block title%}
 ONE RENTAL Details <br>
 {%endblock title%}
@@ -9,5 +10,8 @@ ONE RENTAL Details <br>
         return date: {{info.return_date}} <br> 
         customer: {{info.customer.first_name}} {{info.customer.last_name}} <br>
         vehicle id: {{info.vehicle.id}} <br>
-
+        {%if user.is_superuser%}
+<a href="{%url 'update_rental' info.id%}">Change rental</a>
+{%endif%}
+        
 {%endblock content%}

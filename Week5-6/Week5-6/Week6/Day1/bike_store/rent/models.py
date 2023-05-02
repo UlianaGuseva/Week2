@@ -1,6 +1,5 @@
 from django.db import models
 
-from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 class Customer(models.Model):
@@ -46,3 +45,6 @@ class Rental(models.Model):
     return_date = models.DateField(blank=True, null=True)
     customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
     vehicle =  models.ForeignKey(Vehicle, on_delete=models.DO_NOTHING)
+    
+
+

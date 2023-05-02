@@ -5,15 +5,30 @@ from datetime import date
 from django.views import generic
 from .models import Post
 from .forms import PostForm
-
+from django.contrib.auth.mixins import LoginRequiredMixin #for generic views
+from django.contrib.auth.decorators import login_required
 # CRUD - CREATE - RETRIEVE - UPDATE - DELETE
 
-class PostCreateView(generic.CreateView):
-
+# @login_required(login_url=reverse_lazy('login'))
+# def a_view(request):
+#     ...
+    
+    
+    
+class PostCreateView(LoginRequiredMixin, generic.CreateView):
+    login_url = reverse_lazy('login')
+    
     template_name = 'create_post.html'
     model = Post
     form_class = PostForm
     success_url = reverse_lazy("posts-all")
+    
+    def get_initial(self):
+        user = self.request.user
+        profile = user.profile
+        initial_data = {'author': profile,
+                        'date_created': date.today()}
+        return initial_data
 
 class PostUpdateView(generic.UpdateView):
 

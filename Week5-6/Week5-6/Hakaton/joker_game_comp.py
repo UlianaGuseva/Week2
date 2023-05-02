@@ -61,11 +61,11 @@ class Game():
         return value
     
 
-deck = [['hearts', '6'], ['hearts', '7'], ['hearts', '8'], ['hearts', '9'], ['hearts', '10'], ['hearts', 'J'], ['hearts', 'D'], ['hearts', 'K'], ['hearts', 'A'], 
-        ['diamonds', '6'], ['diamonds', '7'], ['diamonds', '8'], ['diamonds', '9'], ['diamonds', '10'], ['diamonds', 'J'], ['diamonds', 'D'], ['diamonds', 'K'], ['diamonds', 'A'], 
-        ['spades', '6'], ['spades', '7'], ['spades', '8'], ['spades', '9'], ['spades', '10'], ['spades', 'J'], ['spades', 'D'], ['spades', 'K'], ['spades', 'A'], 
-        ['cross', '6'], ['cross', '7'], ['cross', '8'], ['cross', '9'], ['cross', '10'], ['cross', 'J'], ['cross', 'D'], ['cross', 'K'], ['cross', 'A'], 
-        ]
+# deck = [['hearts', '6'], ['hearts', '7'], ['hearts', '8'], ['hearts', '9'], ['hearts', '10'], ['hearts', 'J'], ['hearts', 'D'], ['hearts', 'K'], ['hearts', 'A'], 
+#         ['diamonds', '6'], ['diamonds', '7'], ['diamonds', '8'], ['diamonds', '9'], ['diamonds', '10'], ['diamonds', 'J'], ['diamonds', 'D'], ['diamonds', 'K'], ['diamonds', 'A'], 
+#         ['spades', '6'], ['spades', '7'], ['spades', '8'], ['spades', '9'], ['spades', '10'], ['spades', 'J'], ['spades', 'D'], ['spades', 'K'], ['spades', 'A'], 
+#         ['cross', '6'], ['cross', '7'], ['cross', '8'], ['cross', '9'], ['cross', '10'], ['cross', 'J'], ['cross', 'D'], ['cross', 'K'], ['cross', 'A'], 
+#         ]
 
 player1 = Player(name='Player1', serial_num=1, points=0, hand={})
 player2 = Player(name='Player2', serial_num=2, points=0, hand={})
@@ -76,7 +76,7 @@ players = {1: player1, 2: player2, 3: player3, 4: player4}
 
 
 def distribution(num):
-    new_deck = my_game.shuffle_deck()
+    new_deck = my_game.shuffle_deck().copy()
     print(new_deck)
     print(my_game.deck)
     for n in range(num):

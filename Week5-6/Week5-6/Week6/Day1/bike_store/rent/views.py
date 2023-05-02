@@ -1,22 +1,22 @@
 from django.shortcuts import render, redirect
 from rent.models import Rental, Customer, Vehicle
 from django.views import generic
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from rent.forms import NewRentalForm, NewCustomerForm, NewVehicleForm, FindVehicle
 
 # Create your views here.
 
-class ShowAllRentals(generic.ListView):
-    template_name = 'rental_all.html'
-    context_object_name = 'rentals'
-    model = Rental
+# class ShowAllRentals(generic.ListView):
+#     template_name = 'rental_all.html'
+#     context_object_name = 'rentals'
+#     model = Rental
     
-# def rental(request):
-#     rentals_unreturned = Rental.objects.filter(return_date__isnull=True)
-#     rental_returned = Rental.objects.filter(return_date__isnull=False).order_by('-rental_date')
-#     context = {'unreturned': rentals_unreturned,
-#                'returned': rental_returned}
-#     return render(request, 'rental_all.html', context)
+def rental(request):
+    rentals_unreturned = Rental.objects.filter(return_date__isnull=True)
+    rental_returned = Rental.objects.filter(return_date__isnull=False).order_by('-rental_date')
+    context = {'unreturned': rentals_unreturned,
+               'returned': rental_returned}
+    return render(request, 'rental_all.html', context)
 
 class RentalDetails(generic.DetailView):
     template_name = 'rental_details.html'
@@ -93,20 +93,20 @@ class AllVehicle(generic.ListView):
 #     context = {'info': vehicle}
 #     return render(request, 'vehicles_all.html', context)
 
-class FindVehicleView(generic.DetailView):
-    template_name = 'vehicles_find.html'
-    model = Vehicle
-    context_object_name = 'info'
+# class FindVehicleView(generic.DetailView):
+#     template_name = 'vehicles_find.html'
+#     model = Vehicle
+#     context_object_name = 'info'
     
-# def vehicle_find(request, id):
-#     vehicle = Vehicle.objects.get(id=id)
-#     try:
-#         rental = Rental.objects.get(vehicle=id, return_date__isnull=True)
-#     except:
-#         rental = "no"
-#     context = {'info': vehicle,
-#                'is_rented': rental}
-#     return render(request, 'vehicles_find.html', context)
+def vehicle_find(request, id):
+    vehicle = Vehicle.objects.get(id=id)
+    try:
+        rental = Rental.objects.get(vehicle=id, return_date__isnull=True)
+    except:
+        rental = "no"
+    context = {'info': vehicle,
+               'is_rented': rental}
+    return render(request, 'vehicles_find.html', context)
 class AddVehicle(generic.CreateView):
     template_name = 'vehicle_add.html'
     model = Vehicle
@@ -151,6 +151,14 @@ def home(request):
         }
 
     return render(request, 'home.html', context)
+
+
+class RentalUpdateView(generic.UpdateView):
+    template_name = 'rental_add.html'
+    model = Rental
+    form_class = NewRentalForm
+    success_url = reverse_lazy('all_rental')
+    
 
 
 

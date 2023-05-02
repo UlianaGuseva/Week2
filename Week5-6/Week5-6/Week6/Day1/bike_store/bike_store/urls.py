@@ -15,21 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rent import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('rent/rental/', views.ShowAllRentals.as_view(), name='all_rental'),
+    path('rent/rental/', views.rental, name='all_rental'),
     path('rent/rental/<int:pk>', views.RentalDetails.as_view(), name='one_rental'),
     path('rent/rental/add', views.AddRental.as_view(), name='add_rental'),
     path('rent/customer/<int:pk>', views.FindCustomer.as_view(), name='one_customer'),
     path('rent/customer/', views.AllCustomers.as_view(), name='all_customers'),
     path('rent/customer/add', views.AddCustomer.as_view(), name='add_customers'),
     path('rent/vehicle/', views.AllVehicle.as_view(), name='all_vehicle'),
-    path('rent/vehicle/<int:pk>', views.FindVehicleView.as_view(), name='one_vehicle'),
+     path('rent/vehicle/<int:id>', views.vehicle_find, name='one_vehicle'),
     path('rent/vehicle/add', views.AddVehicle.as_view(), name='add_vehicle'),    
-    path('rent/home', views.home, name='home')    
-    
-    
-]
+    path('rent/home', views.home, name='home_page'),
+    path('account/', include('accounts.urls')),
+    path("rent-update/<int:pk>", views.RentalUpdateView.as_view(), name='update_rental'),
+
+    ]

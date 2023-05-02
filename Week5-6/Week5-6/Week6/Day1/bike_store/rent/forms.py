@@ -37,8 +37,5 @@ class FindVehicle(forms.Form):
         self.fields['id_r'].required = False
         self.fields['id_c'].required = False
         
-# class FindCustomer(forms.Form):
-#     id = forms.IntegerField()
-        
-# class FindRental(forms.Form):
-#     id = forms.IntegerField()
+
+
