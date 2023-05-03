@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.contrib.auth.models import  AbstractBaseUser
+
 # Create your models here.
 
 class UserProfile(models.Model):
@@ -8,3 +10,4 @@ class UserProfile(models.Model):
     image = models.URLField(null=True, blank=True)
     def __str__(self):
         return f'{self.user.username}'
+    

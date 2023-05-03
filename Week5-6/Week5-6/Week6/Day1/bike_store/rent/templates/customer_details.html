@@ -10,5 +10,7 @@ Customer Details <br>
         email: {{info.email}} <br> 
         phone_number: {{info.phone_number}}  <br>
         address : {{info.address}}, {{info.city}}, {{info.country}}<br>
-
+        comment : {{info.comment}} <br>
+        
+        <a href="{%url 'update_customer' info.id%}"> Comment </a>
 {%endblock content%}

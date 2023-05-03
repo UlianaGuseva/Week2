@@ -1,5 +1,5 @@
 from django import forms
-from .models import Rental, Customer, Vehicle
+from .models import Rental, Customer, Vehicle, Comment
 
 class NewRentalForm(forms.ModelForm):
     class Meta:
@@ -39,3 +39,11 @@ class FindVehicle(forms.Form):
         
 
 
+class CommentForm(forms.ModelForm):
+    
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        widgets = {'vehicle': forms.HiddenInput(),
+                   'author': forms.HiddenInput(),
+                   'content': forms.Textarea()}

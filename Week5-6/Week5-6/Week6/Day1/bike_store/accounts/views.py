@@ -19,7 +19,7 @@ class ProfileView(DetailView):
 def profile_redirect_view(request):
     user = request.user
     if hasattr(user, 'profile'):
-        return redirect('all_rental')
+        return redirect('profile-page', user.profile.id)
     else:
         return redirect('create_profile') 
       
@@ -28,7 +28,7 @@ def create_profile_view(request):
         form = ProfileForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('posts-all')
+            return redirect('posts_all')
             
     user = request.user
     form = ProfileForm(initial={'user': user})

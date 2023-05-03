@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from rent.models import Rental, Customer, Vehicle
 from django.views import generic
 from django.urls import reverse_lazy
-from rent.forms import NewRentalForm, NewCustomerForm, NewVehicleForm, FindVehicle
+from django.contrib import messages
+from rent.forms import NewRentalForm, NewCustomerForm, NewVehicleForm, FindVehicle, CommentForm
 
 # Create your views here.
 
@@ -85,8 +86,28 @@ class AddCustomer(generic.CreateView):
 class AllVehicle(generic.ListView):
     template_name = 'vehicles_all.html'
     model = Vehicle
-    context_object_name = 'info'
+    context_object_name = 'vehicles'
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        user = self.request.user
+        if hasattr(user, 'profile'):
+            author = self.request.user.profile
+            vehicles = self.get_queryset()
+            comments = [CommentForm(initial={'vehicle': vehicle, 'author': author}) for vehicle in vehicles]  
+            context['vehicle_comments'] = zip(vehicles, comments)
+
+        return context
+    
+def add_comment(request):
+    if request.method == "POST":
+        print("ADD COMMENT", request.POST)
+        filled_form = CommentForm(request.POST)
+        if filled_form.is_valid():
+            filled_form.save()
+            print('Successfull')
+            return redirect('all_vehicle')
 
 # def vehicle_all(request):
 #     vehicle = Vehicle.objects.all().order_by('id')
@@ -145,20 +166,32 @@ def home(request):
     
     
     form_vehicle = FindVehicle()
-    context = {'form_vehicle': form_vehicle
-                #    'form_customer': form_customer,
-                #    'form_rental': form_rental           
+    context = {'form_vehicle': form_vehicle        
         }
 
     return render(request, 'home.html', context)
 
 
 class RentalUpdateView(generic.UpdateView):
-    template_name = 'rental_add.html'
+    template_name = 'rental_update.html'
     model = Rental
     form_class = NewRentalForm
     success_url = reverse_lazy('all_rental')
     
 
+class VehicleDeleteView(generic.DeleteView):
+    model = Vehicle
+    template_name = 'vehicle_delete.html'
+    success_url = reverse_lazy('all_vehicle')
+    success_message = "The vehicle %(id)s was deleted"
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(VehicleDeleteView, self).delete(request, *args, **kwargs)    
 
+
+# class CustomerUpdateView(generic.UpdateView):
+#     template_name = 'customer_update.html'
+#     model = Customer
+#     form_class = NewCustomerForm
+#     success_url = reverse_lazy('one_customer')
 

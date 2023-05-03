@@ -30,7 +30,8 @@ urlpatterns = [
      path('rent/vehicle/<int:id>', views.vehicle_find, name='one_vehicle'),
     path('rent/vehicle/add', views.AddVehicle.as_view(), name='add_vehicle'),    
     path('rent/home', views.home, name='home_page'),
-    path('account/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path("rent-update/<int:pk>", views.RentalUpdateView.as_view(), name='update_rental'),
-
+    path("vehicle-delete/<int:pk>", views.VehicleDeleteView.as_view(), name='delete_vehicle'),
+    path("add_comment/", views.add_comment, name='add-comment'),
     ]

@@ -3,11 +3,41 @@
 ALL VEHICLES <br>
 {%endblock title%}
 
-        {%block content%}
-        {%for i in info%}
-        <a href="{% url 'one_vehicle' i.id%}">
-        id: {{i.id}} | {{i.size.name}} {{i.vehicle_type.name}}   <br>
-        </a>
+ {%block content%}
+       <p> {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} </p>
+
+{% if user.is_authenticated%}
+    <br>
+    Hello {{user}}<br>
+    
+
+    {%for vehicle, comment_form  in vehicle_comments%}
+    <a href="{% url 'one_vehicle' vehicle.id%}">
+        {{vehicle}} <br>
+    </a>
+            {%for comment in vehicle.comments.all%}
+            {{comment}}<br>
+            {%endfor%}
+        <form method="post" action="{%url 'add-comment'%}">
+        {%csrf_token%}
+        {{comment_form}}
+        <button type="submit"> Comment </button>
+        </form>
         {%endfor%} 
+
+{% else%}
+
+        {%for v in vehicles%}
+        <br> {{v}} <br>
+
+        {%endfor%}
+
+        {%endif%}
         {%endblock content%}
 

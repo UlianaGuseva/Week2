@@ -15,5 +15,10 @@ is rented now: yes
 {%else%}
 is rented now: no
 {%endif%}
+<br>
+{% if user.is_superuser %}
+
+        <a href="{% url 'delete_vehicle' info.id %}"> Delete </a>
+{%endif%}
 {%endblock content%}
 

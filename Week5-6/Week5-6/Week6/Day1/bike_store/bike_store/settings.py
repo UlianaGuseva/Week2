@@ -128,5 +128,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'all_rental'
+LOGIN_REDIRECT_URL = 'profile_redirect'
 LOGOUT_REDIRECT_URL = 'login'
