@@ -1,4 +1,5 @@
 from random import shuffle
+from joker_game_comp import game_comp
 class Player():
     def __init__(self, name: str, points: int, hand: dict, serial_num: int) -> None:
         self.name = name
@@ -61,8 +62,7 @@ players = {1: player1, 2: player2, 3: player3, 4: player4}
 
 
 def distribution(num):
-    new_deck = my_game.shuffle_deck()
-    print(new_deck)
+    new_deck = my_game.shuffle_deck().copy()
     for n in range(num):
         player1.hand[n] = new_deck.pop(-1)
     for n in range(num):
@@ -182,8 +182,7 @@ def delete_points_bets():
         i.bet = 0     
     
 def game(my_game):    
-    
-    for f in range(9):
+    for f in range(2):
         my_game.first_after_distribution = 'y'
         print(f'GAME {f+1}')
         player1, player2, player3, player4 = distribution(my_game.num_distribution)
@@ -209,9 +208,19 @@ def game(my_game):
         delete_points_bets()
         print(f'Points: \n Player1: {player1.big_points}\n Player2: {player2.big_points}\n Player3: {player3.big_points}\n Player4: {player4.big_points}')
     winner = player1
-    for p in players:
-        if p.big_points > winner.points:
+    for p in players.values():
+        if p.big_points > winner.big_points:
             winner = p
+            
     print(f'The WINNER is {winner.name}')
-        
-game(my_game)
+
+def comp_or_not_game(my_game):
+    chose_game = 0
+    while chose_game != 1 and chose_game != 2:
+        chose_game = int(input('if yoy want to play with computer, print "1", if you want to play with friends, print "2": '))
+        if chose_game == 1:
+            game_comp(my_game)  
+        elif chose_game == 2:
+            game(my_game) 
+      
+comp_or_not_game(my_game)

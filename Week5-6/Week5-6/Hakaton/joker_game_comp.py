@@ -1,6 +1,12 @@
 from random import shuffle
 import random
 
+
+
+
+
+
+
 class Player():
     def __init__(self, name: str, points: int, hand: dict, serial_num: int) -> None:
         self.name = name
@@ -59,13 +65,7 @@ class Game():
     def get_value_of_card(self, card):
         value = self.weight_of_values[card[1]]
         return value
-    
 
-# deck = [['hearts', '6'], ['hearts', '7'], ['hearts', '8'], ['hearts', '9'], ['hearts', '10'], ['hearts', 'J'], ['hearts', 'D'], ['hearts', 'K'], ['hearts', 'A'], 
-#         ['diamonds', '6'], ['diamonds', '7'], ['diamonds', '8'], ['diamonds', '9'], ['diamonds', '10'], ['diamonds', 'J'], ['diamonds', 'D'], ['diamonds', 'K'], ['diamonds', 'A'], 
-#         ['spades', '6'], ['spades', '7'], ['spades', '8'], ['spades', '9'], ['spades', '10'], ['spades', 'J'], ['spades', 'D'], ['spades', 'K'], ['spades', 'A'], 
-#         ['cross', '6'], ['cross', '7'], ['cross', '8'], ['cross', '9'], ['cross', '10'], ['cross', 'J'], ['cross', 'D'], ['cross', 'K'], ['cross', 'A'], 
-#         ]
 
 player1 = Player(name='Player1', serial_num=1, points=0, hand={})
 player2 = Player(name='Player2', serial_num=2, points=0, hand={})
@@ -77,8 +77,6 @@ players = {1: player1, 2: player2, 3: player3, 4: player4}
 
 def distribution(num):
     new_deck = my_game.shuffle_deck().copy()
-    print(new_deck)
-    print(my_game.deck)
     for n in range(num):
         player1.hand[n] = new_deck.pop(-1)
     for n in range(num):
@@ -114,11 +112,13 @@ def bets(my_game):
             if turn != 4:
                 turn += 1
             else:
-                turn = 1
-                
+                turn = 1      
         banned_bet = my_game.num_distribution - (player1.bet+player2.bet+player3.bet+player4.bet)
         if players[turn].get_hearts() == banned_bet:
             players[turn].bet = players[turn].get_hearts()+1
+        else:
+            players[turn].bet = players[turn].get_hearts()
+        
                 
         
     
@@ -238,9 +238,9 @@ def delete_points_bets():
     
     
     
-def game(my_game):    
+def game_comp(my_game):    
     
-    for f in range(9):
+    for f in range(3):
         my_game.first_after_distribution = 'y'
         print(f'GAME {f+1}')
         player1, player2, player3, player4 = distribution(my_game.num_distribution)
@@ -266,9 +266,11 @@ def game(my_game):
         delete_points_bets()
         print(f'Points: \n Player1: {player1.big_points}\n Player2: {player2.big_points}\n Player3: {player3.big_points}\n Player4: {player4.big_points}')
     winner = player1
-    for p in players:
+    for p in players.values():
         if p.big_points > winner.points:
             winner = p
+            
     print(f'The WINNER is {winner.name}')
         
-game(my_game)
+if __name__ == '__main__': 
+    game_comp(my_game)
