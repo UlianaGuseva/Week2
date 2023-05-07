@@ -1,0 +1,104 @@
+pip install djangorestframework
+django-admin startproject polls_rest
+cd polls_rest
+'rest_framework' in apps in settings
+path('api-auth/', include('rest_framework.urls')) in URLS
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver 
+
+python manage.py startapp posts
+add 'posts' in apps in settings
+add models
+python manage.py makemigrations
+python manage.py migrate   
+
+in admin in 'posts' register model
+from .models import Post
+# Register your models here.
+
+create serializers.py in posts:
+from rest_framework import serializers
+from .models import Post
+
+class PostSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+
+in terminal
+PS C:\Users\asus\Desktop\Week2\Week5-6\Week5-6\Week7\polls_rest> python manage.py shell
+Python 3.11.2 (tags/v3.11.2:878ead1, Feb  7 2023, 16:38:35) [MSC v.1934 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from posts.models import Post
+>>> post = Post(title="test", custom_id = 10, category="Dj')
+  File "<console>", line 1
+    post = Post(title="test", custom_id = 10, category="Dj')
+                                                       ^
+SyntaxError: incomplete input
+>>> post = Post(title="test", custom_id = 10, category='Dj') 
+>>> post.save()
+>>> post
+<Post: test>
+>>> from posts.serializers import PostSerializer
+>>> serializer = PostSerializer(post)
+>>> serializer
+PostSerializer(<Post: test>):
+    id = IntegerField(label='ID', read_only=True)
+    title = CharField(max_length=100)
+    custom_id = IntegerField()
+    category = ChoiceField(choices=(('Dj', 'Django'), ('Py', 'Python')))
+    publish_date = DateTimeField(read_only=True)
+    last_updated = DateTimeField(read_only=True)
+>>> serializer.data
+{'id': 1, 'title': 'test', 'custom_id': 10, 'category': 'Dj', 'publish_date': '2023-05-07T08:16:06.596504Z', 'last_updated': '2023-05-07T08:16:06.597499Z'}
+>>> from rest_framework.parsers import JSONParser
+>>> from rest_framework.renderers import JSONRenderer 
+>>> content = JSONRenderer().render(serializer.data)
+>>> content
+b'{"id":1,"title":"test","custom_id":10,"category":"Dj","publish_date":"2023-05-07T08:16:06.596504Z","last_updated":"2023-05-07T08:16:06.597499Z"}'
+>>> type(content)
+<class 'bytes'>
+
+>>> import io
+>>> stream = io.BytesIO(content)
+>>> stream
+<_io.BytesIO object at 0x000001E0B135E5C0>
+>>> data = JSONParser().parse(stream)
+>>> data
+{'id': 1, 'title': 'test', 'custom_id': 10, 'category': 'Dj', 'publish_date': '2023-05-07T08:16:06.596504Z', 'last_updated': '2023-05-07T08:16:06.597499Z'}
+>>> type(data)
+<class 'dict'>
+
+>>> deserialized = PostSerializer(data=data) 
+>>> deserialized
+PostSerializer(data={'id': 1, 'title': 'test', 'custom_id': 10, 'category': 'Dj', 'publish_date': '2023-05-07T08:16:06.596504Z', 'last_updated': '2023-05-07T08:16:06.597499Z'}):
+    id = IntegerField(label='ID', read_only=True)
+    title = CharField(max_length=100)
+    custom_id = IntegerField()
+    category = ChoiceField(choices=(('Dj', 'Django'), ('Py', 'Python')))
+    publish_date = DateTimeField(read_only=True)
+    last_updated = DateTimeField(read_only=True)
+>>> deserialized.is_valid()
+True
+
+>>> from weatherapp.models import Report
+>>> report = Report(location = 'Kazan', temperature = 22.2, type = 'sunny') 
+>>> report.save()
+>>> serializer = ReportSerializer(report)
+>>> content = JSONRenderer().render(serializer.data)   
+>>> stream = io.BytesIO(content)
+>>> data = JSONParser().parse(stream)
+>>> deserialized = ReportSerializer(data=data)
+>>> deserialized
+ReportSerializer(data={'id': 2, 'location': 'Kazan', 'temperature': 22.2, 'created_at': '2023-05-07T08:51:50.447215Z', 'type': 'sunny'}):
+    id = IntegerField(label='ID', read_only=True)
+    location = CharField(max_length=50)
+    temperature = FloatField()
+    created_at = DateTimeField(read_only=True)
+    type = ChoiceField(allow_blank=True, allow_null=True, choices=(('sunny', 'Sunny'), ('cloudy', 'Cloudy'), ('windy', 'Windy'), ('rainy', 'Rainy'), ('stormy', 'Stormy')), required=False)
+>>> deserialized.is_valid()
+True

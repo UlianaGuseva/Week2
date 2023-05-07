@@ -1,5 +1,5 @@
 """
-URL configuration for image_share project.
+URL configuration for students project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,17 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
-from is_app.views import view_profile, profile_redirect_view, update_profile, SignUpView
+from django.urls import path, include
+from students_app.views import StudentList, StudentDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
-    path('profile/', view_profile , name='profile'),
-    path('signup/', SignUpView.as_view(), name='signup'),
-    path('update-profile/', update_profile, name='update-profile'),
-    path('profile-redirect/', profile_redirect_view, name='profile-redirect')
-    
+    path('api-auth/', include('rest_framework.urls')),
+    path('students/', StudentList.as_view(), name='student_list'),
+    path('students/<int:pk>/', StudentDetail.as_view(), name='student_detail')
 ]
