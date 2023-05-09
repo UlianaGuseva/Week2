@@ -16,8 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from managment.views import DepartmentCreateAPIView, DepartmentListAPIView, EmployeeListAPIView, EmployeeCreateAPIView, ProjectRetrieveAPIView, ProjectUpdateAPIView, TaskRetrieveAPIView, TaskUpdateAPIView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('rest_framework.urls')),
+    path('departments/', DepartmentListAPIView.as_view(), name='all_departments'),
+    path('departments/create/', DepartmentCreateAPIView.as_view(), name='create_department'),
+    path('employee/', EmployeeListAPIView.as_view(), name='all_employee'),
+    path('employee/create/', EmployeeCreateAPIView.as_view(), name='create_employee'),
+    path('projects/<int:pk>', ProjectRetrieveAPIView.as_view(), name='get_project'),
+    path('projects/update/<int:pk>', ProjectUpdateAPIView.as_view(), name='update_project'),
+    path('task/<int:pk>', TaskRetrieveAPIView.as_view(), name='get_task'),
+    path('task/update/<int:pk>', TaskUpdateAPIView.as_view(), name='update_task'),
 ]
