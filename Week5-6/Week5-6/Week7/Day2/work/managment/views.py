@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from .models import Department, Employee, Task, Project
-from .serializers import DepartmentSerializer, EmployeeSerializer, TaskSerializer, ProjectSerializer
+from .serializers import DepartmentSerializer, EmployeeSerializer, TaskSerializer, ProjectSerializer, EmployeeUrlsSerializer
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from .permissions import IsDepartmentAdmin
 # Create your views here.
 
 class DepartmentListAPIView(ListAPIView):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
+ 
+class DepartmentDetailAPIView(RetrieveAPIView):
+    permission_classes = (IsDepartmentAdmin, )
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer    
     
 class DepartmentCreateAPIView(CreateAPIView):
     queryset = Department.objects.all()
@@ -14,7 +20,7 @@ class DepartmentCreateAPIView(CreateAPIView):
     
 class EmployeeListAPIView(ListAPIView):
     queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+    serializer_class = EmployeeUrlsSerializer
     
 class EmployeeCreateAPIView(CreateAPIView):
     queryset = Employee.objects.all()

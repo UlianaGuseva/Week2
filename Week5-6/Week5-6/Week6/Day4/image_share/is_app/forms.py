@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile
+from .models import Profile, Image
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -8,3 +8,11 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             "user": forms.HiddenInput()
         }
+        
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = '__all__'
+        widgets = {
+            'user_uploader': forms.HiddenInput()
+            }

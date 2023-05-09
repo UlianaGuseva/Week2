@@ -9,6 +9,9 @@ class Image(models.Model):
     description = models.CharField()
     user_uploader = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_upoader')
     
+    def __str__(self):
+        return f'{self.image} | {self.title} | {self.description} | {self.user_uploader}'
+    
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     number_images = models.IntegerField(null=True, blank=True, default=0)

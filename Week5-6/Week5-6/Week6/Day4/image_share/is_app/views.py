@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
-from .forms import ProfileForm
-from .models import Profile
+from .forms import ProfileForm, ImageForm
+from .models import Profile, Image
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -49,3 +50,36 @@ def update_profile(request):
 
     context = {'form': form}
     return render(request, 'profile_update.html', context)
+
+class ListImagesView(ListView):
+    template_name = 'images.html'
+    model = Image
+    context_object_name = 'images'
+    
+class AddImageView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    form_class = ImageForm
+    model = Image
+    success_url = reverse_lazy('images_list')
+    template_name = 'add_image.html'
+    def get_initial(self):
+        user = self.request.user
+        profile = user.profile
+        initial_data = {'user_uploader': profile}
+        return initial_data
+    
+# class MyImagesView(ListView):
+#     template_name = 'images.html'
+#     model = Image
+#     context_object_name = 'images'
+    
+#     def get_context_data(self, **kwargs): 
+#         context = super().get_context_data(**kwargs)
+#         context['user_uploader'] = date.today()
+#         return context
+    
+def my_images(request):
+    current_user = request.user
+    images = Image.objects.filter(user_uploader=current_user)
+    context = {'images': images}
+    return render(request, 'images.html', context)    

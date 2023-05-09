@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from is_app.views import view_profile, profile_redirect_view, update_profile, SignUpView
+from is_app.views import view_profile, profile_redirect_view, update_profile, SignUpView, ListImagesView, AddImageView, my_images
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +26,10 @@ urlpatterns = [
     path('profile/', view_profile , name='profile'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('update-profile/', update_profile, name='update-profile'),
-    path('profile-redirect/', profile_redirect_view, name='profile-redirect')
+    path('profile-redirect/', profile_redirect_view, name='profile-redirect'),
+    path('images/', ListImagesView.as_view(), name='images_list'),
+    path('images/add', AddImageView.as_view(), name='images_add'),
+    path('images/my', my_images, name='images_add'),
+    
     
 ]
