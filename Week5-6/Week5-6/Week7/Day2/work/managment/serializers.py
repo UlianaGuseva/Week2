@@ -21,15 +21,16 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = '__all__'
         
-class EmployeeUrlsSerializer(serializers.ModelSerializer):
-    department = serializers.HyperlinkedIdentityField(view_name='get_department')
+# class EmployeeUrlsSerializer(serializers.ModelSerializer):
+#     department = serializers.HyperlinkedIdentityField(view_name='get_department')
+#     class Meta:
+#         model = Employee
+#         fields = '__all__'
+        
+class DepartmentUrlsSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name="department-detail")
     class Meta:
-        model = Employee
+        model = Department
         fields = '__all__'
         
-# class DepartmentUrlsSerializer(serializers.ModelSerializer):
-#     id = serializers.HyperlinkedIdentityField(view_name='get_department')
-#     class Meta:
-#         model = Department
-#         fields = '__all__'
         

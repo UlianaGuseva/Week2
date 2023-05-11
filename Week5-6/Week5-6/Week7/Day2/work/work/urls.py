@@ -22,7 +22,7 @@ urlpatterns = [
     path('api/', include('rest_framework.urls')),
     path('departments/', DepartmentListAPIView.as_view(), name='all_departments'),
     path('departments/create/', DepartmentCreateAPIView.as_view(), name='create_department'),
-    path('departments/details/<int:pk>/', DepartmentDetailAPIView.as_view(), name='get_department'),    
+    path('departments/details/<int:pk>/', DepartmentDetailAPIView.as_view(), name='department-detail'),    
     path('employee/', EmployeeListAPIView.as_view(), name='all_employee'),
     path('employee/create/', EmployeeCreateAPIView.as_view(), name='create_employee'),
     path('projects/<int:pk>/', ProjectRetrieveAPIView.as_view(), name='get_project'),
