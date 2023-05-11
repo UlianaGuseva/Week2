@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%block title%}
+{{book.title}} <br>
+{%endblock title%}
+
+{%block content%}
+<h1>{{book.title}}</h1><br>
+<img src='{{book.thumbnail_url}}' width=120px heigth=200px> <br> <br>
+        
+        author : {{book.author}} <br> 
+        published_date: {{book.published_date}} <br> 
+        description: {{book.description}}  <br>
+        page count: {{book.page_count}} <br>
+        categories: {{book.categories}} <br>
+        number reviews: {{book.number_reviews}} <br>
+        book rating: {{book.book_rating}} <br>
+        reviews:
+        {%for i in reviews%}
+        <a href='{%url 'review_detail' i.id %}'>{{i.name}}</a><br>
+        {%endfor%}
+        
+
+{%endblock content%}
